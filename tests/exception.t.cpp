@@ -2,9 +2,10 @@
 #include <iostream>
 
 
+void error () { throw err::Exception("Found error when attempting to <do something>."); }
 int main() {
     try{ 
-        throw err::Exception("Testing the exception.");
+        error();
     }
     catch (const err::Exception& e) {
         std::cerr << e.report(true);
