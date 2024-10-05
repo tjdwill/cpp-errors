@@ -3,11 +3,6 @@
 
 // Redundant include guards *a la* John Lakos' "Large-Scale C++ Software Design"
 
-#ifndef INCLUDED_STD_EXCEPTION
-#include <exception>
-#define INCLUDED_STD_EXCEPTION
-#endif
-
 #ifndef INCLUDED_STD_STRING
 #include <string>
 #define INCLUDED_STD_STRING
@@ -21,11 +16,12 @@
 // My thinking is that since a user of this class would only need the string representation of the stacktrace, no stacktrace-dependent types are exposed directly.
 // Compatibility shouldn't be an issue, right?
 #ifndef INCLUDED_STACKTRACE
-#include <stacktrace>
+#include <cpptrace/cpptrace.hpp>
 #define INCLUDED_STACKTRACE
 #endif
 
 namespace err {
+    using cpptrace::stacktrace; using String = std::string;
     /*  Design Notes and TODO
      *
      *  - [ ] What do I need? Rule of five?
@@ -42,15 +38,40 @@ namespace err {
     ///     1. A mutable general error message, and a way to get a read-only reference to it.
     ///     2. Source location: Where the exception was generated (file, line, col, and function).
     ///     3. Stack trace
-    class ErrReport final {
+    class Exception final {
         private:
-            std::string d_msg {};                   // the message string
+            String d_msg {};                        // the message string
             std::source_location d_src_location;    // source location
-            std::stacktrace d_strace;               // stacktrace
+            stacktrace d_strace;                    // stacktrace
         public:
-            ErrReport()
-                : d_msg("An error has occurred.\n"), d_src_location(std::source_location::current()), d_strace(std::stacktrace())
-            {}
+            /* ~~Constructors~~ */
+            Exception()
+                : d_msg("An error has occurred."), d_src_location(std::source_location::current()), d_strace(stacktrace::current()) {}
+            Exception(const String msg)
+                : d_msg(msg), d_src_location(std::source_location::current()), d_strace(stacktrace::current()) {}
+
+            // Rule of five (unneeded as I'm not managing any resources)
+            // Exception(const Exception&);            // copy constructor
+            // Exception operator=(const Exception&);  // copy assignment
+            // Exception(Exception&&);                 // move constructor
+            // Exception operator=(Exception&&);       // move assignment
+            // ~Exception();                           // destructor
+
+            /* ~~Methods~~ */
+
+            /// Appends the provided message to the current one.
+            /// Useful for propagating the exception.
+            void log(const String& msg);
+
+            /// View the error message.
+            const String& what() const;
+            /// View the source location in which the exception was thrown.
+            const String where() const;
+            /// View the stacktrace leading to this exception.
+            String how(bool color=false) const;
+            
+            /// Generate a (possibly colored) string of the entire report (err_msg, stacktrace, and source information)
+            const String report(bool color=false) const;  
     };
 }
 
