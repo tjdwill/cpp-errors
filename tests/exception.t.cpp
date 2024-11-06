@@ -1,4 +1,4 @@
-#include "../src/exception.hpp"
+#include "../include/exception.hpp"
 #include <iostream>
 
 
@@ -9,10 +9,9 @@ int main() {
     }
     catch (const err::Exception& e) {
         std::cerr << e.report(true);
-        exit(1);
     }
     catch (...) {
         std::cerr << "Unexpected error." << "\n";
-        exit(2);
+        exit(1);
     }
 }

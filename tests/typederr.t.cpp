@@ -1,5 +1,5 @@
 /// Test TypedException
-#include "../src/exception.hpp"
+#include "../include/exception.hpp"
 #include <iostream>
 #include <cassert>
 
@@ -25,8 +25,6 @@ int main() {
         // test mutation
         e.data_mut() += 10;
         assert(e.data() == VAL + 10);
-        
-        exit(1);
     } catch (const Exception& e) {
         std::cerr << e.report();
         exit(2);
