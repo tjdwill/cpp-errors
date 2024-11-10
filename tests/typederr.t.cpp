@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cassert>
 
-using err::TypedException; using err::Exception;
+using cpperrors::TypedException; using cpperrors::Exception;
 using IntErr = TypedException<int>;
 
 int VAL = 27;

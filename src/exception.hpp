@@ -18,7 +18,7 @@
 #define INCLUDED_STACKTRACE
 #endif
 
-namespace err {
+namespace cpperrors {
     using cpptrace::stacktrace; using String = std::string; using std::source_location;
 
     /// A general base class for creating a generalized exception.

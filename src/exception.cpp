@@ -5,7 +5,7 @@
 #include <string>
 #include <cpptrace/cpptrace.hpp>
 
-namespace err {
+namespace cpperrors {
     using String = std::string;
 
     // ~~ Exception  ~~
