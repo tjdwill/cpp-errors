@@ -1,11 +1,11 @@
 /// exception.cpp
-
 #include "exception.hpp"
 #include <sstream>
 #include <string>
 #include <cpptrace/cpptrace.hpp>
 
-namespace cpperrors {
+namespace cpperrors 
+{
     using String = std::string;
 
     // ~~ Exception  ~~

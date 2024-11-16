@@ -1,10 +1,13 @@
+// typederr.t.cpp
 /// Test TypedException
-#include "../include/exception.hpp"
-#include <iostream>
+#include "../src/exception.hpp"
 #include <cassert>
+#include <iostream>
+
 
 using cpperrors::TypedException; using cpperrors::Exception;
 using IntErr = TypedException<int>;
+
 
 int VAL = 27;
 
