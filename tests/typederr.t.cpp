@@ -12,7 +12,7 @@ using IntErr = TypedException<int>;
 int VAL = 27;
 
 void throw_typed() {
-    throw IntErr(VAL, "Found a rouge int.");
+    throw IntErr(VAL, "Found a rogue int.");
 }
 
 int main() {
