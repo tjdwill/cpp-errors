@@ -11,11 +11,13 @@ using IntErr = TypedException<int>;
 
 int VAL = 27;
 
-void throw_typed() {
+void throw_typed()
+{
     throw IntErr(VAL, "Found a rogue int.");
 }
 
-int main() {
+int main()
+{
 
     try {
         throw_typed();
