@@ -5,7 +5,12 @@
 #include <iostream>
 
 
-void error () { throw err::Exception("Found error when attempting to <do something>."); }
+void error ()
+{
+    throw err::Exception("Found error when attempting to <do something>.");
+}
+
+
 int main() {
     try{ 
         error();
