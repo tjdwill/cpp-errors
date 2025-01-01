@@ -11,8 +11,9 @@ void error ()
 }
 
 
-int main() {
-    try{ 
+int main()
+{
+    try { 
         error();
     }
     catch (const err::Exception& e) {
@@ -57,11 +58,13 @@ using IntErr = TypedException<int>;
 
 int VAL = 27;
 
-void throw_typed() {
+void throw_typed()
+{
     throw IntErr(VAL, "Found a rouge int.");
 }
 
-int main() {
+int main()
+{
 
     try {
         throw_typed();
