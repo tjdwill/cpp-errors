@@ -94,7 +94,7 @@ Stack trace (most recent call first):
 #6 0x0000556007869f10 at /home/tj/programming/cpp/.libraries/cpp-errors/build/TestTyped
 
 ERROR LOG:
-Found a rouge int.
+Found a rogue int.
 Caught an IntErr.
 
 THROWN FROM:
