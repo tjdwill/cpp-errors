@@ -2,4 +2,6 @@
 *.swp
 *.x
 build
+ninjaBuild
 .cache
+CMakeUserPresets.json
