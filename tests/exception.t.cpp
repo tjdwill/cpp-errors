@@ -4,10 +4,14 @@
 
 using cpperrors::Exception;
 
-void error () { throw Exception("Found error when attempting to <do something>."); }
+void error ()
+{
+    throw Exception("Found error when attempting to <do something>.");
+}
 
-int main() {
-    try{ 
+int main()
+{
+    try { 
         error();
     }
     catch (const Exception& e) {
